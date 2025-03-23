@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-export function Header() {
+export default function Header() {
   return (
     <div className="h-full flex items-center">
       <Link href={'/'} className="text-lg leading-tight">

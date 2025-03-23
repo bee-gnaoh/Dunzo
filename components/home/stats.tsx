@@ -3,7 +3,7 @@
 import React from 'react';
 import { DynamicIcon } from 'lucide-react/dynamic';
 
-export function Stats() {
+export default function Stats() {
   return (
     <div className="mt-8 flex items-center justify-between gap-6 ">
       {/* card item */}

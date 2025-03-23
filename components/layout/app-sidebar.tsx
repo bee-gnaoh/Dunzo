@@ -13,14 +13,21 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from '../ui/sidebar';
-import { Header } from '@/components/layout';
 import { CalendarCheck, LayoutGrid, NotebookPen, Settings } from 'lucide-react';
 import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 
 const MenuItems: {
-  groupTitle: string;
-  items: { title: string; icon: IconName }[];
+  groupTitle?: string;
+  items: { title: string; icon: IconName; subIcon?: IconName }[];
 }[] = [
+  {
+    items: [
+      {
+        title: 'Tasks',
+        icon: 'circle-check',
+      },
+    ],
+  },
   {
     groupTitle: 'Main Menu',
     items: [
@@ -49,23 +56,21 @@ const MenuItems: {
   },
 ];
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export default function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar {...props}>
-      <SidebarHeader className="h-16 border-b ">
-        <Header />
-      </SidebarHeader>
+    <Sidebar collapsible="icon" {...props}>
+      <SidebarHeader className="h-16 border-b ">{/* <Header /> */}</SidebarHeader>
       <SidebarContent>
         {MenuItems.map((group, index) => (
           <React.Fragment key={index}>
             <SidebarGroup>
-              <SidebarGroupLabel>{group.groupTitle.toUpperCase()}</SidebarGroupLabel>
+              {group.groupTitle && <SidebarGroupLabel>{group.groupTitle.toUpperCase()}</SidebarGroupLabel>}
               <SidebarGroupContent>
-                <SidebarMenu className="pl-2">
+                <SidebarMenu>
                   {group.items.map((item, idx) => (
                     <SidebarMenuItem key={idx}>
                       <SidebarMenuButton
-                        data-active={index === 0 && idx === 0}
+                        data-active={item.title === 'Tasks'}
                         className="group/menu-item flex items-center data-[active=true]:bg-transparent"
                       >
                         <DynamicIcon name={item.icon} className="size-4 group-data-[active=true]/menu-item:text-main-500" />

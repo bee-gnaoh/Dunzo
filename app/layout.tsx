@@ -1,18 +1,14 @@
 import './globals.css';
 import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import AppSidebarWrapper from './app-sidebar-wrapper';
+import AppTopBar from '@/components/layout/app-topbar';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  variable: '--font-plus-jakarta',
 });
 
 export const metadata: Metadata = {
@@ -27,11 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${plusJakartaSans.variable} antialiased`}>
         <SidebarProvider>
           <div className="flex w-full">
             <AppSidebarWrapper />
-            <div className="flex-1 w-full">{children}</div>
+            <div className="flex-1 w-full">
+              <AppTopBar />
+              {children}
+            </div>
           </div>
         </SidebarProvider>
       </body>

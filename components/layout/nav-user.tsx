@@ -14,7 +14,7 @@ import {
 } from '../ui/dropdown-menu';
 import { Bell, ChevronsUpDown, IdCard, LogOut, Settings } from 'lucide-react';
 
-export function NavUser() {
+export default function NavUser() {
   return (
     <SidebarMenu>
       <SidebarMenuItem>

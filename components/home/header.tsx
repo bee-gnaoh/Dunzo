@@ -3,7 +3,7 @@
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
-export function Header() {
+export default function Header() {
   return (
     <div className="w-full flex items-center justify-between py-4">
       <div className="flex items-center gap-4">
